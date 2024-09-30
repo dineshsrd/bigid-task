@@ -18,8 +18,6 @@ public class NameFinder {
 
     private static final Logger LOGGER = Logger.getLogger(NameFinder.class.getName());
 
-    static final List<String> NAMES = Arrays.asList("James", "John", "Robert", "Michael", "William", "David", "Richard", "Charles", "Joseph", "Thomas", "Christopher", "Daniel", "Paul", "Mark", "Donald", "George", "Kenneth", "Steven", "Edward", "Brian", "Ronald", "Anthony", "Kevin", "Jason", "Matthew", "Gary", "Timothy", "Jose", "Larry", "Jeffrey", "Frank", "Scott", "Eric", "Stephen", "Andrew", "Raymond", "Gregory", "Joshua", "Jerry", "Dennis", "Walter", "Patrick", "Peter", "Harold", "Douglas", "Henry", "Carl", "Arthur", "Ryan", "Roger");
-
     private static final ConcurrentHashMap<String, List<Location>> aggregatedResults = new ConcurrentHashMap<>();
 
     public static void main(String[] args) {
