@@ -25,7 +25,7 @@ public class NameFinder {
         try {
             ClassLoader classLoader = NameFinder.class.getClassLoader();
             Path filePath = Paths.get(Objects.requireNonNull(classLoader.getResource("big.txt")).toURI());
-            int batchSize = 1000;
+            int batchSize = 2000;
 
             ExecutorService executor = Executors.newFixedThreadPool(10);
 

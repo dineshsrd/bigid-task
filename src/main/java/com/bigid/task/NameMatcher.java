@@ -34,12 +34,14 @@ public class NameMatcher implements Runnable {
         for (String name : NAMES) {
             List<Location> locations = new ArrayList<>();
             Pattern pattern = Pattern.compile("\\b" + name + "\\b");
-
+            int size = 0;
             for (int i = 0; i < lines.length; i++) {
                 Matcher matcher = pattern.matcher(lines[i]);
                 while (matcher.find()) {
-                    locations.add(new Location(lineOffset + i, matcher.start()));
+                    int charOff = size + matcher.start();
+                    locations.add(new Location(lineOffset + i, charOff));
                 }
+                size += lines[i].length() + 1;
             }
             if (!locations.isEmpty()) {
                 results.put(name, locations);
@@ -49,6 +51,6 @@ public class NameMatcher implements Runnable {
         results.forEach((name, locations) -> aggregatedResults.merge(
                 name, locations, (oldList, newList) -> { oldList.addAll(newList); return oldList; }
         ));
-        LOGGER.info("Processed between " + (lineOffset-1000) + " and "+ lineOffset +" lines");
+        //LOGGER.info("Processed between " + (lineOffset-1000) + " and "+ lineOffset +" lines");
     }
 }
